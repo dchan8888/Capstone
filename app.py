@@ -96,7 +96,7 @@ def librarian_agent(user_query):
     return response.text
 
 # --- AGENT 2: THE GUARDIAN ---
-guardian_model = genai.GenerativeModel('gemini-2.5-pro')
+guardian_model = genai.GenerativeModel('gemini-2.5-flash')
 
 def guardian_agent(draft_answer):
     prompt = f"""
