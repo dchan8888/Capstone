@@ -162,10 +162,10 @@ def main_system(query):
     return final_answer
 
 # --- WEB INTERFACE ---
-st.set_page_config(page_title="FinStep UK", page_icon="🇬🇧")
+st.set_page_config(page_title="Savvy Capybara", page_icon="🇬🇧")
 
-st.title("FinStep UK 🇬🇧")
-st.subheader("Financial Literacy for School Leavers")
+st.title("Savvy Capybara")
+st.subheader("Financial Literacy for everyone")
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -174,11 +174,11 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-if prompt := st.chat_input("Ask about ISAs, Overdrafts, or Student Loans..."):
+if prompt := st.chat_input("Ask about ISAs, Overdrafts, or Current Accounts..."):
     st.chat_message("user").markdown(prompt)
     st.session_state.messages.append({"role": "user", "content": prompt})
 
-    with st.spinner("Consulting the Librarian and Guardian..."):
+    with st.spinner("Consulting the Capybara Elders..."):
         try:
             response = main_system(prompt)
             st.chat_message("assistant").markdown(response)
