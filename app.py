@@ -162,10 +162,10 @@ def main_system(query):
     return final_answer
 
 # --- WEB INTERFACE ---
-st.set_page_config(page_title="Savvy Capybara", page_icon="🇬🇧")
+st.set_page_config(page_title="Savvy Capybara 🦫", page_icon="🇬🇧")
 
-st.title("Savvy Capybara")
-st.subheader("Financial Literacy for everyone")
+st.title("Savvy Capybara 🦫")
+st.subheader("Financial Literacy for Everyone")
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
