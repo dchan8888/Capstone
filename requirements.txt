@@ -1,0 +1,7 @@
+google-generativeai
+chromadb
+streamlit
+
+# The following is needed for Streamlit Cloud deployment
+
+pysqlite3-binary ; sys_platform == 'linux'
