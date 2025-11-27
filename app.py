@@ -4,20 +4,52 @@ import os
 import streamlit as st
 
 # --- CONFIGURATION ---
-# We get the key from Streamlit's secret manager
-# This works for both local testing (via .streamlit/secrets.toml) and Cloud deployment
 try:
     api_key = st.secrets["GOOGLE_API_KEY"]
     genai.configure(api_key=api_key)
-except FileNotFoundError:
-    st.error("🚨 API Key not found! Please create a .streamlit/secrets.toml file.")
-    st.stop()
-except KeyError:
-    st.error("🚨 'GOOGLE_API_KEY' not found in secrets!")
+except Exception as e:
+    st.error(f"Missing API Key: {e}")
     st.stop()
 
-# Connect to the database
-# We use try/except to handle cloud deployment scenarios safely
+# --- DATABASE SETUP (Cloud Fix) ---
+# This block runs ONLY if the database is missing (like when you first deploy to cloud)
+if not os.path.exists("./fin_db"):
+    with st.spinner("Building Knowledge Base for the first time..."):
+        try:
+            # 1. Setup DB
+            temp_client = chromadb.PersistentClient(path="./fin_db") 
+            temp_collection = temp_client.get_or_create_collection(name="financial_docs")
+            
+            # 2. Read Files (Make sure these .txt files are in your GitHub repo!)
+            files = [
+                "isa_guide.txt", 
+                "overdraft_guide.txt", 
+                "current_account_debit_card.txt"  # <--- NEW FILE ADDED HERE
+            ]
+            
+            documents = []
+            ids = []
+            
+            for file_name in files:
+                # We use try-except here just in case a file is missing from the repo
+                try:
+                    with open(file_name, "r") as f:
+                        documents.append(f.read())
+                        ids.append(file_name)
+                except FileNotFoundError:
+                    st.warning(f"Warning: Could not find {file_name}. Skipping.")
+
+            # 3. Add to DB
+            if documents:
+                temp_collection.add(documents=documents, ids=ids)
+                st.success("Database built successfully!")
+            else:
+                st.error("No documents found to build database.")
+                
+        except Exception as e:
+            st.error(f"Failed to build database: {e}")
+
+# --- CONNECT TO DATABASE ---
 try:
     client = chromadb.PersistentClient(path="./fin_db")
     collection = client.get_collection(name="financial_docs")
@@ -28,7 +60,6 @@ except Exception as e:
 # --- THE TOOL ---
 def search_knowledge_base(query):
     """Looks up financial info in our database."""
-    # print(f"📚 Librarian is searching for: {query}") # Debug log
     results = collection.query(query_texts=[query], n_results=1)
     
     if not results['documents']:
@@ -37,14 +68,11 @@ def search_knowledge_base(query):
     return results['documents'][0][0]
 
 # --- AGENT 1: THE LIBRARIAN ---
-# We use the fast 'flash' model for quick retrieval and formatting
 librarian_model = genai.GenerativeModel('gemini-2.5-flash')
 
 def librarian_agent(user_query):
-    # 1. Get the facts
     retrieved_info = search_knowledge_base(user_query)
     
-    # 2. The "Cool Sibling" Prompt
     prompt = f"""
     You are a wise, friendly financial mentor for students. 
     Your goal is to explain money concepts simply, without using banking jargon.
@@ -68,12 +96,9 @@ def librarian_agent(user_query):
     return response.text
 
 # --- AGENT 2: THE GUARDIAN ---
-# We use the smarter 'pro' model for reasoning and compliance checking
 guardian_model = genai.GenerativeModel('gemini-2.5-pro')
 
 def guardian_agent(draft_answer):
-    # print("🛡️ Guardian is reviewing the draft...") # Debug log
-    
     prompt = f"""
     You are a UK Financial Compliance Officer. Review the draft answer below.
     
@@ -84,6 +109,7 @@ def guardian_agent(draft_answer):
     2.  **KEEP THE TONE:** Do NOT make the text formal. Keep the emojis and simple language.
     3.  **ACCURACY:** Ensure UK terms (e.g., 'Cheque' not 'Check').
     4.  **HONESTY:** If the draft says "I don't know," leave it alone.
+    5.  **NO PREAMBLE:** Output ONLY the final rewritten answer. Do not say "Here is the reviewed version".
     
     DRAFT ANSWER: {draft_answer}
     
@@ -95,15 +121,8 @@ def guardian_agent(draft_answer):
 
 # --- ORCHESTRATION ---
 def main_system(query):
-    # Step 1: Librarian gets the facts
     draft = librarian_agent(query)
-    
-    # Optional: Print draft to console for debugging
-    # print("[DEBUG] Librarian's Raw Draft:", draft)
-
-    # Step 2: Guardian checks the facts
     final_answer = guardian_agent(draft)
-    
     return final_answer
 
 # --- WEB INTERFACE ---
@@ -112,26 +131,20 @@ st.set_page_config(page_title="FinStep UK", page_icon="🇬🇧")
 st.title("FinStep UK 🇬🇧")
 st.subheader("Financial Literacy for School Leavers")
 
-# 1. Initialize Chat History
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# 2. Display Chat History
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# 3. Handle User Input
-if prompt := st.chat_input("Ask about ISAs or Overdrafts..."):
-    # Show user message
+if prompt := st.chat_input("Ask about ISAs, Overdrafts, or Student Loans..."):
     st.chat_message("user").markdown(prompt)
     st.session_state.messages.append({"role": "user", "content": prompt})
 
-    # Get AI response
     with st.spinner("Consulting the Librarian and Guardian..."):
         try:
             response = main_system(prompt)
-            # Show AI response
             st.chat_message("assistant").markdown(response)
             st.session_state.messages.append({"role": "assistant", "content": response})
         except Exception as e:
