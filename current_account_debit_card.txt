@@ -1,0 +1,168 @@
+Knowledge Base: Current Accounts & Debit Cards
+
+Source: The Savvy Capybara (UK Financial Education)
+Tone: Chill, humorous, jargon-free, authoritative but accessible.
+
+Core Definitions
+
+What is a Current Account?
+
+A current account is the most basic, "must-have" bank account in the UK. It serves as the central hub for an individual's cash flow.
+
+Function: It is the "digital wallet" where salary is paid in and bills (rent, utilities, subscriptions) are paid out.
+
+Purpose: Designed for day-to-day "in-and-out" spending. It is not designed for long-term saving.
+
+What is a Debit Card?
+
+A debit card is the physical plastic card or digital app equivalent linked directly to the current account.
+
+Mechanism: When used (e.g., tapping for coffee), money is deducted directly and instantly from the current account balance.
+
+Key Distinction: It is not a credit card. Users can only spend money they actually hold in the account (unless they have an overdraft). It acts as a "remote control" for the cash in the account.
+
+When, Why, and How: The Capybara Guide
+
+WHEN to Act
+
+When to Open a Current Account:
+
+Getting a Job: Essential for receiving salary payments.
+
+Turning 18: Transitioning from a child/teen account to a full adult account to build credit history.
+
+University: Opening a "Student Account" to access 0% interest overdrafts.
+
+When to Switch Banks:
+
+Poor Service: If the app crashes constantly or customer service is unreachable.
+
+Free Money: When a rival bank offers a "Switching Bonus" (often £150+) that requires minimal effort.
+
+Fee Hikes: If the bank introduces monthly fees without adding value.
+
+When to Check Your Balance:
+
+Weekly: To track spending against the budget.
+
+Immediately Before Spending: To ensure enough funds are available and avoid unarranged overdraft fees.
+
+WHY it Matters
+
+Why do I need one?
+
+Financial Inclusion: Most employers will not pay cash; they require a sort code and account number.
+
+Bills: Direct Debits are the standard way to pay for phone contracts, gym memberships, and rent.
+
+Credit Score: Managing a current account responsibly is the first step to building a credit history, which is needed later for loans or mortgages.
+
+Why switch instead of staying loyal?
+
+The "Loyalty Penalty": Banks rarely reward existing customers. They save their best rates and cash bonuses for new customers.
+
+Better Tools: Newer "challenger" banks often have superior apps with automated budgeting features that legacy banks lack.
+
+Why avoid unarranged overdrafts?
+
+Cost: They are often the most expensive way to borrow money.
+
+Damage: They leave a negative mark on credit files, suggesting financial distress to other lenders.
+
+HOW to Execute
+
+How to Open a Current Account:
+
+Online/App: Most accounts can be opened in minutes via a smartphone.
+
+Documents Needed:
+
+Photo ID: Passport or Driving Licence.
+
+Proof of Address: Utility bill, council tax bill, or bank statement (usually dated within the last 3 months).
+
+How to Switch (The Easy Way):
+
+Use CASS: The Current Account Switch Service.
+
+The Guarantee: It takes exactly 7 working days.
+
+The Automation: The service automatically moves all money, Direct Debits, and Standing Orders to the new account. It also informs your employer (though it's savvy to double-check this).
+
+The Closure: It automatically closes the old account so you don't have to deal with the old bank.
+
+How to Choose a Current Account
+
+When comparing current accounts, users should look at four specific factors rather than general branding:
+
+Switching Bonuses ("The Bribe"):
+
+Many UK banks offer cash incentives (typically £100 - £200) to customers who switch their main current account to them using the Current Account Switch Service (CASS).
+
+This is often the easiest way to make money from a bank.
+
+App Experience & Customer Service:
+
+The quality of the mobile app is critical for budgeting and ease of use.
+
+Customer service accessibility is vital (i.e., can you speak to a human vs. an automated bot).
+
+Overdraft Fees ("The Sting"):
+
+An overdraft allows spending beyond a £0 balance.
+
+Terms vary: Some banks offer a small 0% interest buffer (e.g., £250), while others charge high interest rates immediately. This should be checked before the facility is needed.
+
+Perks & Packaged Accounts:
+
+Standard Accounts: Usually free.
+
+Reward Accounts: May offer cashback on bills or spending.
+
+Packaged Accounts: Charge a monthly fee (e.g., £10-£15) for included benefits like mobile phone insurance or travel insurance. Users must calculate if the "perks" outweigh the annual cost.
+
+Banking Jargon Buster
+
+Account Identification
+
+Sort Code: A 6-digit number (formatted as XX-XX-XX) that identifies the specific bank and the branch where the account is held. It acts like the "postcode" for the money.
+
+Account Number: An 8-digit number unique to the individual customer's account at that bank. It acts like the "house number."
+
+Safety Rule: It is safe to share the Sort Code and Account Number to receive payments.
+
+Payment Types
+
+Standing Order: An instruction set up by the user to push a fixed amount of money to a recipient on a fixed date (e.g., paying rent of £700 on the 1st of the month).
+
+Direct Debit: An instruction giving a company permission to pull money from the user's account. The amount can vary each month (e.g., mobile phone bills or utility bills).
+
+Overdraft Types
+
+Arranged Overdraft: A pre-agreed limit with the bank (e.g., an agreement to go up to -£500).
+
+Unarranged Overdraft: Spending more money than is in the account without prior agreement. This often incurs high fees, interest, and negative impacts on credit scores.
+
+Account Types
+
+Current Account: For daily spending and bills. Low interest.
+
+Savings Account: For storing money long-term. Generally offers higher interest (AER) but may have restrictions on withdrawals.
+
+Critical Security Information
+
+NEVER Share:
+
+The 4-digit card PIN.
+
+Online banking passwords.
+
+The 3-digit CVC/CVV number on the back of the debit card.
+
+SAFE to Share:
+
+Sort Code (to receive payment).
+
+Account Number (to receive payment).
+
+Name on Account.

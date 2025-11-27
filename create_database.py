@@ -7,7 +7,7 @@ client = chromadb.PersistentClient(path="./fin_db")
 collection = client.get_or_create_collection(name="financial_docs")
 
 # 2. Load your text files
-files = ["isa_guide.txt", "overdraft_guide.txt"]
+files = ["isa_guide.txt", "overdraft_guide.txt", "current_account_debit_card.txt"]
 documents = []
 ids = []
 
