@@ -79,7 +79,7 @@ def librarian_agent(user_query):
     
     INSTRUCTIONS:
     1.  Answer the user's QUESTION using the CONTEXT below.
-    2.  TONE: Casual, empathetic, and direct. (Use "You" instead of "The account holder").
+    2.  TONE: Casual, empathetic, not too wordy, and direct. (Use "You" instead of "The account holder").
     3.  FORMATTING: Use emojis and bold text to make it readable.
     4.  STRUCTURE your answer exactly like this:
         * **The Short Answer:** (A direct "Yes/No/Maybe" based on the facts)
