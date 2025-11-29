@@ -1,142 +1,23 @@
-FinStep UK 🇬🇧: The AI Financial Mentor for Students
-
-💡 The Problem
-
-Young people in the UK often face a "financial cliff edge" when they turn 18. Misunderstanding complex financial products like Overdrafts, ISAs, or Credit Scores can lead to long-term debt.
-
-While students turn to AI for answers, standard chatbots can be dangerous. They may "hallucinate" financial advice (e.g., "You should buy this stock"), which violates FCA (Financial Conduct Authority) regulations and puts users at risk.
-
-🤖 The Solution
-
-FinStep UK is a "Zero-to-Hero" multi-agent AI system designed to bridge this gap. It provides safe, engaging, and compliant financial education.
-
-Instead of a single AI that might make mistakes, we use a Multi-Agent RAG (Retrieval-Augmented Generation) architecture:
-
-The Librarian (The Educator): Retrieves verified facts and explains them in a fun, "cool older sibling" persona.
-
-The Guardian (The Safety Net): A second AI agent that acts as a Compliance Officer, filtering out personal advice and ensuring safety before the user sees the answer.
-
-🏗️ Architecture
-
-The system follows a Sequential Multi-Agent Chain:
-
-graph LR
-    User(User Query) -->|Streamlit Interface| Librarian
+🧢 Cappy: The Savvy Capybara (UK Financial Assistant)"Lowering your blood pressure while raising your Financial IQ."Cappy is an autonomous AI agent designed to help UK school leavers and young adults navigate the confusing world of personal finance. From understanding ISAs to avoiding Overdraft traps, Cappy provides safe, jargon-free education using a multi-agent architecture.🔗 Click Here to Try the Live App📋 Table of ContentsThe ProblemThe SolutionSystem ArchitectureAgent WorkflowTech StackEvaluation & QualityInstallationVideo Demo🚩 The ProblemFinancial literacy in the UK is critically low among young adults leaving full-time education.The Knowledge Gap: Concepts like "Compound Interest," "ISAs," and "Direct Debits" are rarely taught in schools.The "Free Money" Trap: Students often view overdrafts as free cash rather than debt, leading to long-term credit score damage.The Jargon Barrier: Traditional banking advice is often dry, overly formal, and intimidating.💡 The SolutionCappy is not just a chatbot; it is a RAG-augmented Multi-Agent System that acts as a financial concierge.It knows the facts: It retrieves accurate UK-specific financial data from a curated knowledge base.It keeps it chill: It translates "Bank Speak" into plain English using the "Savvy Capybara" persona.It keeps it safe: A secondary "Guardian" agent reviews every response to ensure compliance and prevent irresponsible financial advice.🏗️ System ArchitectureCappy utilizes a Sequential Chain Pattern (Librarian -> Guardian) to ensure accuracy and safety.graph LR
+    User(User Input) --> Orchestrator[Main System]
+    Orchestrator --> Agent1[Agent 1: The Librarian]
     
-    subgraph "Agent 1: The Librarian"
-    Librarian -->|Search Tool| DB[(ChromaDB Vector Store)]
-    DB -->|Retrieved Context| Librarian
-    Librarian -->|Draft Answer| Draft(Raw Draft)
+    subgraph "Knowledge Retrieval (RAG)"
+    Agent1 <--> DB[(ChromaDB\nKnowledge Base)]
     end
     
-    Draft -->|Review Request| Guardian
+    Agent1 -->|Draft Response| Agent2[Agent 2: The Guardian]
     
-    subgraph "Agent 2: The Guardian"
-    Guardian{Safety Check}
-    Guardian -->|Advice Detected| Rewrite[Rewrite to Educational]
-    Guardian -->|Safe| Approve[Approve Draft]
+    subgraph "Safety Layer"
+    Agent2 -->|Compliance Check| Final[Final Output]
     end
     
-    Rewrite --> FinalOutput
-    Approve --> FinalOutput
-    FinalOutput -->|Streamlit Interface| User
-
-
-✨ Key Features
-
-RAG (Retrieval-Augmented Generation): The AI does not guess; it looks up facts from a verified Knowledge Base (fin_db) containing specific guides on UK financial products.
-
-Role-Playing Persona: The Librarian uses specific prompt engineering to break down complex terms into "The Short Answer," "The Trap ⚠️," and "The Real Cost."
-
-Compliance Guardrails: The Guardian agent enforces a strict "No Advice" policy, rewriting "You should..." suggestions into "Some people choose to..." education.
-
-Session Memory: The agent remembers the context of the chat using Streamlit's session state.
-
-🛠️ Tech Stack
-
-Language: Python 3.10+
-
-LLM: Google Gemini 1.5 Flash (Librarian) & Gemini 1.5 Pro (Guardian)
-
-Database: ChromaDB (Persistent Vector Store)
-
-Frontend: Streamlit
-
-Orchestration: Custom Python Functions
-
-🚀 How to Run Locally
-
-Prerequisites
-
-Python 3.10 or higher installed.
-
-A Google Cloud API Key (Gemini).
-
-Installation Steps
-
-Clone the repository:
-
-git clone [https://github.com/YOUR_USERNAME/FinStep_Capstone.git](https://github.com/YOUR_USERNAME/FinStep_Capstone.git)
-cd FinStep_Capstone
-
-
-Install dependencies:
-
-pip install -r requirements.txt
-
-
-Set up your API Key:
-
-Create a new folder named .streamlit in the root directory.
-
-Inside it, create a file named secrets.toml.
-
-Add your API key to the file:
-
-GOOGLE_API_KEY = "your_api_key_here"
-
-
-Build the Knowledge Base:
-Run the ingestion script to create the vector database from the text files.
-
-python create_database.py
-
-
-Run the Application:
-Launch the web interface.
-
-streamlit run app.py
-
-
-☁️ How to Deploy (Streamlit Cloud)
-
-Push your code to GitHub.
-
-Go to Streamlit Community Cloud and connect your repository.
-
-In the app settings, go to Advanced Settings > Secrets.
-
-Paste your API key in the secrets box:
-
-GOOGLE_API_KEY = "your_api_key_here"
-
-
-Click Deploy.
-
-📂 Project Structure
-
-app.py: The main application containing the Agent logic and Streamlit UI.
-
-create_database.py: Script to ingest text files into ChromaDB.
-
-isa_guide.txt / overdraft_guide.txt: The source data for the Knowledge Base.
-
-.streamlit/secrets.toml: Local file for API keys (ignored by Git).
-
-fin_db/: The generated Vector Database folder (generated locally).
-
-requirements.txt: List of Python dependencies.
-
-📄 License
-
-This project is open-source and available under the MIT License.
+    Final --> UI[Streamlit Interface]
+🤖 Agent WorkflowRetrieval (The Tool): The system queries ChromaDB to fetch context-specific guides (e.g., isa_guide.txt) relevant to the user's question.Agent 1: The Librarian (Generator):Model: Gemini 2.5 Flash.Role: Synthesizes the retrieved data into the "Savvy Capybara" persona.Goal: Educational, jargon-free, and encouraging.Agent 2: The Guardian (Critique):Model: Gemini 2.5 Flash.Role: Acts as a Financial Compliance Officer.Goal: Reviews Agent 1's draft to remove direct financial advice (e.g., changing "You should buy..." to "Some people use..."), ensures UK-specific terminology, and verifies safety.🛠️ Tech StackLLM: Google Gemini 2.5 Flash (via google-generativeai)Vector Database: ChromaDB (Persistent local storage)Interface: StreamlitLanguage: Python 3.11Deployment: Streamlit Cloud (Compatible with pysqlite3-binary)📊 Evaluation & QualityTo ensure Cappy gives safe and helpful advice, we prioritize Evaluation as a core architectural pillar.1. The Golden Dataset (eval_questions.csv)We maintain a curated dataset of questions covering high-risk topics (Overdrafts, Debt) and factual topics (ISAs). This ensures we can regress-test the agent against known good answers.2. The "Guardian" Protocol (Safety)We strictly adhere to the "Agents for Good" track requirements by implementing a specific Guardrails Layer. The Guardian Agent enforces:No Direct Advice: Shifts language from directive ("Do this") to descriptive ("This is how it works").Geographic Constraint: Ensures advice is relevant to UK HMRC/FCA rules, not US laws.🚀 Installation & Setup1. Clone the Repositorygit clone [https://github.com/your-username/cappy-agent.git](https://github.com/your-username/cappy-agent.git)
+cd cappy-agent
+2. Install Dependenciespip install -r requirements.txt
+3. API Key ConfigurationCreate a .streamlit/secrets.toml file:[secrets]
+GOOGLE_API_KEY = "your_gemini_api_key_here"
+4. Build the Knowledge BaseNote: The app auto-builds the database on the first run, but you can force a rebuild using:python create_database.py
+5. Run the Agentstreamlit run app.py
+🎥 Video Demo(Link to YouTube video coming soon)Video Highlights:0:00 - The Problem: Financial illiteracy in the UK.0:45 - The Solution: Meeting Cappy.1:30 - Under the Hood: RAG + Multi-Agent Architecture.2:15 - Live Demo: Asking about "Free Money" (Overdrafts) and seeing the safety guardrails in action.Disclaimer: Cappy is an educational tool designed to improve financial literacy. It does not constitute regulated financial advice. Always consult a qualified professional before making significant financial decisions.
