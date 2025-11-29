@@ -143,9 +143,9 @@ def main_system(query):
     return final_answer
 
 # --- WEB INTERFACE ---
-st.set_page_config(page_title="Savvy Capybara 🦫", page_icon="🇬🇧")
+st.set_page_config(page_title="Savvy Capybara 🇬🇧", page_icon="🦫")
 
-st.title("Savvy Capybara 🦫")
+st.title("₍ᐢ-(ｪ)-ᐢ₎ Savvy Capybara")
 st.subheader("Financial Literacy for Everyone")
 
 if "messages" not in st.session_state:
@@ -159,7 +159,7 @@ if prompt := st.chat_input("Ask about ISAs, Overdrafts, or Current Accounts...")
     st.chat_message("user").markdown(prompt)
     st.session_state.messages.append({"role": "user", "content": prompt})
 
-    with st.spinner("Consulting the Capybara Elders..."):
+    with st.spinner("₍ᐢ-(ｪ)-ᐢ₎..."):
         try:
             response = main_system(prompt)
             st.chat_message("assistant").markdown(response)
