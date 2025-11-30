@@ -100,8 +100,8 @@ We strictly adhere to the "Agents for Good" track requirements by implementing a
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/your-username/cappy-agent.git](https://github.com/your-username/cappy-agent.git)
-cd cappy-agent
+git clone [https://github.com/dchan8888/Capstone.git](https://github.com/dchan8888/Capstone.git)
+cd Capstone
 ```
 
 ### 2. Install Dependencies
