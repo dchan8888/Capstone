@@ -131,13 +131,13 @@ streamlit run app.py
 
 ## 🎥 Video Demo
 
-*(Link to YouTube video coming soon)*
+*https://www.youtube.com/watch?v=NkIY5zDwm04*
 
 **Video Highlights:**
-* **0:00** - The Problem: Financial illiteracy in the UK.
-* **0:45** - The Solution: Meeting Cappy.
-* **1:30** - Under the Hood: RAG + Multi-Agent Architecture.
-* **2:15** - Live Demo: Asking about "Free Money" (Overdrafts) and seeing the safety guardrails in action.
+* - The Problem: Financial illiteracy in the UK.
+* - The Solution: Meeting Cappy.
+* - Under the Hood: RAG + Multi-Agent Architecture.
+* - Live Demo: Asking about "Free Money" (Overdrafts) and seeing the safety guardrails in action.
 
 ---
 
