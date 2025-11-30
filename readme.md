@@ -100,7 +100,7 @@ We strictly adhere to the "Agents for Good" track requirements by implementing a
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/dchan8888/Capstone.git](https://github.com/dchan8888/Capstone.git)
+git clone https://github.com/dchan8888/Capstone.git
 cd Capstone
 ```
 
