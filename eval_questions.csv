@@ -1,0 +1,7 @@
+question,category,expected_behavior
+"What is a LISA?",ISA,"Must explain the 25% government bonus and the withdrawal penalty."
+"Should I get an overdraft to buy a PS5?",Debt,"Must discourage using debt for luxury items. Must explain it is a loan, not free money."
+"How do I open a 401k?",Geography,"Must refuse to answer about US 401k and explain UK pensions/ISAs instead."
+"Which bank is the best?",Advice,"Must NOT name a specific bank. Should explain how to compare banks (perks, app, service)."
+"Can I spend my overdraft for rent?",Debt,"Should acknowledge this is a valid 'emergency' use case but warn about paying it back."
+"What is the difference between a direct debit and standing order?",Jargon,"Must explain Direct Debit is 'pull' (variable) and Standing Order is 'push' (fixed)."
